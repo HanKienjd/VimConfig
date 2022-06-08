@@ -1,14 +1,3 @@
-"  _   ____  __  _  _________  ___  _______  __  _________  ___  _______ 
-" | | / / / / / / |/ / ___/ / / \ \/ / __/ |/ / / ___/ __ \/ _ \/ __/ _ \
-" | |/ / /_/ / /    / (_ / /_/ / \  / _//    / / /__/ /_/ / // / _// , _/
-" |___/\____/ /_/|_/\___/\____/  /_/___/_/|_/  \___/\____/____/___/_/|_|
-" Vim customized by Vu Nguyen Coder
-" (See my detailed tutorial here: https://youtu.be/Tp8i1EHsQ1Q )
-"
-" http://youtube.com/VuNguyenCoder
-" http://facebook.com/VuNguyenCoder
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -28,6 +17,7 @@ set nowb
 set noswapfile
 
 syntax on
+set termguicolors
 
 " Enable copying from vim to clipboard
 if has('win32')
@@ -69,6 +59,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 call plug#begin(stdpath('config').'/plugged')
 " Theme
 	Plug 'joshdick/onedark.vim', 					" Dark theme
+	Plug 'overcache/NeoSolarized'
 
 " File browser
 	Plug 'preservim/nerdTree' 						" File browser  
@@ -85,7 +76,8 @@ call plug#begin(stdpath('config').'/plugged')
 " Status bar
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-
+" Format code
+	Plug 'sbdchd/neoformat'
 " Terminal
 	Plug 'voldikss/vim-floaterm' 					" Float terminal
 
@@ -103,7 +95,8 @@ call plug#begin(stdpath('config').'/plugged')
 	Plug 'MaxMEllon/vim-jsx-pretty' 				" JSX/React
 	Plug 'jackguo380/vim-lsp-cxx-highlight'			" C++ syntax
 	Plug 'uiiaoo/java-syntax.vim' 					" Java
-  
+" Suggest Code
+	Plug 'github/copilot.vim'
 " Debugging
 	Plug 'puremourning/vimspector' 					" Vimspector
 
@@ -116,7 +109,7 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-colorscheme onedark
+colorscheme NeoSolarized
 
 " Overwrite some color highlight 
 if (has("autocmd"))
@@ -135,4 +128,5 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
 	execute 'source' setting_file
 endfor
+
 
