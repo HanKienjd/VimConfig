@@ -17,6 +17,7 @@ set nowb
 set noswapfile
 
 syntax on
+set termguicolors
 
 " Enable copying from vim to clipboard
 if has('win32')
@@ -58,6 +59,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 call plug#begin(stdpath('config').'/plugged')
 " Theme
 	Plug 'joshdick/onedark.vim', 					" Dark theme
+	Plug 'overcache/NeoSolarized'
 
 " File browser
 	Plug 'preservim/nerdTree' 						" File browser  
@@ -77,6 +79,10 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Terminal
 	Plug 'voldikss/vim-floaterm' 					" Float terminal
+	Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'branch': 'release/0.x'
+  \ }
 
 " Code intellisense
 	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server 
@@ -86,18 +92,18 @@ call plug#begin(stdpath('config').'/plugged')
 	Plug 'preservim/nerdcommenter' 					" Comment code 
 	Plug 'liuchengxu/vista.vim' 					" Function tag bar 
 	Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
-
+	Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 " Code syntax highlight
 	Plug 'yuezk/vim-js' 							" Javascript
 	Plug 'MaxMEllon/vim-jsx-pretty' 				" JSX/React
 	Plug 'jackguo380/vim-lsp-cxx-highlight'			" C++ syntax
 	Plug 'uiiaoo/java-syntax.vim' 					" Java
-  
 " Debugging
 	Plug 'puremourning/vimspector' 					" Vimspector
 
 " Source code version control 
 	Plug 'tpope/vim-fugitive' 						" Git
+	Plug 'tpope/vim-eunuch'
 call plug#end()
 
 
@@ -105,7 +111,7 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-colorscheme onedark
+colorscheme onedark 
 
 " Overwrite some color highlight 
 if (has("autocmd"))
