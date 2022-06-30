@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/mnt/c/Dev'
+let g:netrw_dirhist_1='/home/handev/.config/nvim'
+let g:netrw_dirhist_0='/home/handev/.config'
+let g:netrw_dirhist_9='/home/handev/.config/nvim'
+let g:netrw_dirhist_8='/home/handev/.config'
+let g:netrw_dirhist_7='/home/handev/.config/nvim'
+let g:netrw_dirhist_6='/'
+let g:netrw_dirhist_5='/home'
+let g:netrw_dirhist_4='/home/handev'
+let g:netrw_dirhist_3='/home/handev/.config'
+let g:netrw_dirhist_2='/home/handev/.config/nvim'

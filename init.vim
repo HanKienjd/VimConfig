@@ -69,18 +69,19 @@ call plug#begin(stdpath('config').'/plugged')
 	Plug 'unkiwii/vim-nerdtree-sync' 				" Sync current file 
 
 " File search
-	Plug 'junegunn/fzf', 
-		\ { 'do': { -> fzf#install() } } 			" Fuzzy finder 
-	Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf'
 
 " Status bar
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-" Format code
-	Plug 'sbdchd/neoformat'
+
 " Terminal
 	Plug 'voldikss/vim-floaterm' 					" Float terminal
-
+	" post install (yarn install | npm install) then load plugin only for editing supported files
+	Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 " Code intellisense
 	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server 
 	Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
@@ -89,19 +90,18 @@ call plug#begin(stdpath('config').'/plugged')
 	Plug 'preservim/nerdcommenter' 					" Comment code 
 	Plug 'liuchengxu/vista.vim' 					" Function tag bar 
 	Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
-
+	Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 " Code syntax highlight
 	Plug 'yuezk/vim-js' 							" Javascript
 	Plug 'MaxMEllon/vim-jsx-pretty' 				" JSX/React
 	Plug 'jackguo380/vim-lsp-cxx-highlight'			" C++ syntax
 	Plug 'uiiaoo/java-syntax.vim' 					" Java
-" Suggest Code
-	Plug 'github/copilot.vim'
 " Debugging
 	Plug 'puremourning/vimspector' 					" Vimspector
 
 " Source code version control 
 	Plug 'tpope/vim-fugitive' 						" Git
+	Plug 'tpope/vim-eunuch'
 call plug#end()
 
 
@@ -109,7 +109,7 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-colorscheme NeoSolarized
+colorscheme onedark 
 
 " Overwrite some color highlight 
 if (has("autocmd"))
@@ -128,5 +128,4 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
 	execute 'source' setting_file
 endfor
-
 

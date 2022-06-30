@@ -1,6 +1,7 @@
 {
 		"coc.source.file.shortcut": "File",
 		"coc.source.around.shortcut": "?",
+		"suggest.disableKind": true,
 		"suggest.completionItemKindLabels": {
 				"keyword": "\uf1de",
 				"variable": "\ue79b",
@@ -30,7 +31,6 @@
 				"default": "\uf29c"
 		},
 		"languageserver": {	
-				// C++
 				"ccls": {
 						"command": "ccls",
 						"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
@@ -51,7 +51,6 @@
 								}
 						}
 				},
-				// Javascript
 				"javascript": {
 					"command": "typescript-language-features",
 					"filetypes": ["js", "jsx", "ts", "tsx"]
